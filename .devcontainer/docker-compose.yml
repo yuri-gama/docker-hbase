@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  hbase:
+    build:
+      dockerfile: Dockerfile
+    env_file:
+      - hbase.env
+    restart: unless-stopped
+    ports:
+      - 9870:9870
+      - 9000:9000
+      - 7077:7077
+      - 4040:4040
+      - 8020:8020
+      - 22:22
+  # py-spark:
+  #   image: apache/spark-py
+
+networks:
+  default:
+    name: sus-modeling
+    driver: bridge
+    ipam:
+      driver: default

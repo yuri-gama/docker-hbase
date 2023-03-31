@@ -14,7 +14,7 @@ RUN ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa && \
   chmod 0600 ~/.ssh/authorized_keys
 # CMD service ssh start && /opt/hbase/hbase-2.4.15/bin/start-hbase.sh && /opt/hbase/hbase-2.4.15/bin/hbase shell && sleep infinity
 RUN mkdir -p /opt/hadoop/hadoop-3.3.5/logs && mkdir -p /opt/hadoop/hadoop-3.3.5/tmp
-RUN /opt/hadoop/hadoop-3.3.5/bin/hdfs namenode -format
 COPY hbase_conf/* /opt/hbase/hbase-2.4.15/conf/
-EXPOSE 9000 7077 4040 8020 22 9870
-CMD service ssh start && sleep infinity
+EXPOSE 9000 7077 4040 8020 22 9870 16010 8088 8020
+RUN service ssh start && ./opt/hadoop/hadoop-3.3.5/bin/hdfs namenode -format
+CMD service ssh start &&  start-all.sh  && sleep infinity

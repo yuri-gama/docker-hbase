@@ -3,10 +3,11 @@ version: '3'
 services:
   hbase:
     build:
-      dockerfile: Dockerfile
+      dockerfile: DockerfileHbase
     env_file:
       - hbase.env
     restart: unless-stopped
+
     ports:
       - 16010:16010
       - 9870:9870
@@ -16,8 +17,14 @@ services:
       - 8088:8088
       - 8020:8020
       - 22:22
-  # py-spark:
-  #   image: apache/spark-py
+  python_app:
+    build: 
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspace:cached
+      - ~/.gitconfig:/home/vscode/.gitconfig
+      - ~/.ssh:/home/vscode/.ssh
+    command: sleep infinity
 
 networks:
   default:

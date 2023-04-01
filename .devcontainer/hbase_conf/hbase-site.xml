@@ -28,4 +28,8 @@
     <name>hbase.rootdir</name>
     <value>hdfs://localhost:8020/hbase</value>
   </property>
+  <property>
+  <name>hbase.wal.provider</name>
+  <value>filesystem</value>
+</property>
 </configuration>

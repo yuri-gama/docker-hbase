@@ -3,11 +3,9 @@ FROM ubuntu:focal
 
 RUN apt-get update && apt install openjdk-8-jdk -y && apt-get install -y tar && mkdir -p /opt/hbase
 RUN apt-get install -y ssh openssh-server
-# stable version gets old
-# ADD https://dlcdn.apache.org/hbase/stable/hbase-2.4.15-bin.tar.gz /opt/hbase
 ADD https://archive.apache.org/dist/hbase/2.4.15/hbase-2.4.15-bin.tar.gz /opt/hbase
 RUN tar -xzvf /opt/hbase/hbase-2.4.15-bin.tar.gz --directory=/opt/hbase && rm /opt/hbase/hbase-2.4.15-bin.tar.gz
-ADD https://dlcdn.apache.org/hadoop/common/stable/hadoop-3.3.5.tar.gz /opt/
+ADD https://dlcdn.apache.org/hadoop/common/hadoop-3.3.5/hadoop-3.3.5.tar.gz /opt/
 RUN mkdir /opt/hadoop && tar -xzvf /opt/hadoop-3.3.5.tar.gz --directory=/opt/hadoop && rm /opt/hadoop-3.3.5.tar.gz
 COPY ./hadoop_conf/* /opt/hadoop/hadoop-3.3.5/etc/hadoop/
 RUN mkdir -p /opt/hadoop/hadoop-3.3.5/data/namenode && mkdir -p /opt/hadoop/hadoop-3.3.5/data/datanode

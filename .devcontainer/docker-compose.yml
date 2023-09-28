@@ -5,7 +5,7 @@ services:
     build:
       dockerfile: DockerfileHbase
     env_file:
-      - hbase.env
+      - ../resources/environment/hbase.env
     restart: unless-stopped
 
     ports:
@@ -25,6 +25,12 @@ services:
       - ~/.gitconfig:/home/vscode/.gitconfig
       - ~/.ssh:/home/vscode/.ssh
     command: sleep infinity
+  postgres:
+    image: postgres
+    restart: unless-stopped
+    env_file: ../resources/environment/postgresql.env
+    ports:
+      - 5432-5442:5432
 
 networks:
   default:

@@ -1,5 +1,5 @@
-# SUS data modeling
-Repository for modeling data from SUS (Brazilian Health Unified System) using HBase Schema
+# Docker
+Docker repository contains PostgreSQL, HBase, and a Python application.
 
 # Playground
 After docker installed, you just need to reopen vscode in container. It will build and run.  

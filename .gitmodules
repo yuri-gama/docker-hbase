@@ -1,0 +1,3 @@
+[submodule "sus-modeling"]
+	path = sus-modeling
+	url = git@github.com:yuri-gama/sus-modeling.git

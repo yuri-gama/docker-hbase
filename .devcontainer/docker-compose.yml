@@ -7,7 +7,6 @@ services:
     env_file:
       - ../resources/environment/hbase.env
     restart: unless-stopped
-
     ports:
       - 16010:16010
       - 9870:9870
@@ -16,7 +15,14 @@ services:
       - 4040:4040
       - 8088:8088
       - 8020:8020
+      - 2181:2181
       - 22:22
+    deploy:
+    resources:
+      limits:
+        cpus: '2'  
+        memory: 4G  
+
   python_app:
     build: 
       dockerfile: Dockerfile
@@ -31,10 +37,15 @@ services:
     env_file: ../resources/environment/postgresql.env
     ports:
       - 5432-5442:5432
+    deploy:
+      resources:
+        limits:
+          cpus: '2'  
+          memory: 4G  
 
 networks:
   default:
-    name: sus-modeling
+    name: app-hbase
     driver: bridge
     ipam:
       driver: default

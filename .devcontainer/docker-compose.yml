@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 
 services:
   hbase:
@@ -18,10 +18,13 @@ services:
       - 2181:2181
       - 22:22
     deploy:
-    resources:
-      limits:
-        cpus: '2'  
-        memory: 4G  
+      resources:
+        limits:
+          cpus: '3'  
+          memory: 4G  
+        reservations:
+          cpus: '3'
+          memory: 4G
 
   python_app:
     build: 
@@ -40,8 +43,11 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '2'  
+          cpus: '3'  
           memory: 4G  
+        reservations:
+          cpus: '3'
+          memory: 4G 
 
 networks:
   default:
